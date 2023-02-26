@@ -8,8 +8,8 @@
         <base-card>
         <!-- refresh & Register btns -->
         <div class="controls">
-            <button>Refresh</button>
-            <router-link to="/register">Register as a Teacher</router-link>
+            <base-button mode="outline">Refresh</base-button>
+            <base-button link to="/register">Register as a Teacher</base-button>
         </div>
         <!-- list of teachers -->
         <ul v-if="hasTeachers">
@@ -31,12 +31,14 @@
     <script>
 import BaseCard from '@/components/ui/BaseCard.vue';
      import TeacherItem from '../../components/teachers/TeacherItem.vue'
+import BaseButton from '@/components/ui/BaseButton.vue';
 
     export default {
           
         components: {
             TeacherItem,
                 BaseCard,
+                BaseButton,
         },
         computed: {
             filteredTeachers(){

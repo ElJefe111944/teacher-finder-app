@@ -10,15 +10,17 @@
             </span>
         </div>
         <div class="actions">
-            <router-link :to="teacherContactLink">Contact</router-link>
-            <router-link :to="teacherDetailsLink">View Details</router-link>
+            <base-button mode="outline" link :to="teacherContactLink">Contact</base-button>
+            <base-button link :to="teacherDetailsLink">View Details</base-button>
         </div>
     </li>
 </template>
 
 <script>
+import BaseButton from '../ui/BaseButton.vue';
 
 export default {
+  components: { BaseButton },
     props: ['id','firstName','lastName','rate','areas'],
     computed: {
         fullName(){
