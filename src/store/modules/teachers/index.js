@@ -19,7 +19,7 @@ export default {
                     id: 't2',
                     firstName: 'Clara',
                     lastName: 'Fernandez',
-                    areas: ['dele', 'adults', 'children', 'gcse','a-levels'],
+                    areas: ['dele', 'adults', 'children', 'gcse'],
                     description: 'Clara has been a teacvher for over 10 years',
                     hourlyRate: 30,
                 }

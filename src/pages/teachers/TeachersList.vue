@@ -40,17 +40,49 @@ import TeacherFilter from '@/components/teachers/TeacherFilter.vue';
             TeacherFilter,
 
         },
+        data(){
+            return {
+                activeFilters: {
+                    adults: true,
+                    dele: true,
+                    children: true,
+                    gcse: true,  
+                }
+            };
+        },
         computed: {
             filteredTeachers(){
                 // pull data from teacherModule in store
                 // getters [namespaced name / getter name]
-                return this.$store.getters['teachers/teachers'];
+                const teachers =  this.$store.getters['teachers/teachers'];
+                // return teachers that have been filtered
+                return teachers.filter(teacher => {
+                    if(this.activeFilters.adults && teacher.areas.includes('adults')){
+                        return true;
+                    }
+                    if(this.activeFilters.children && teacher.areas.includes('children')){
+                        return true;
+                    }
+                    if(this.activeFilters.dele && teacher.areas.includes('dele')){
+                        return true;
+                    }
+                    if(this.activeFilters.gcse && teacher.areas.includes('gcse')){
+                        return true;
+                    }
+                    return false;
+                });
             },
             hasTeachers(){
                 // check to see if teachers array is empty
                 return this.$store.getters['teachers/hasTeachers'];
             }
-        }
+        },
+        methods: {
+            setFilters(updatedFilters){
+                // overwrite active filters with updated filters
+                this.activeFilters = updatedFilters;
+            }
+        },
     }
     
     </script>

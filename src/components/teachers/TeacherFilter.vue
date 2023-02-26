@@ -20,13 +20,13 @@
         <!-- option 4 -->
         <span class="filter-option">
             <input type="checkbox" id="gcse" checked @change="setFilter">
-            <label for="gcse">GCSEs</label>
+            <label for="gcse">GCSE</label>
         </span>
-                <!-- option 5 -->
-                <span class="filter-option">
-            <input type="checkbox" id="a-levels" checked @change="setFilter">
-            <label for="a-levels">A-Levels</label>
-        </span>
+        <!-- option 5
+        <span class="filter-option">
+            <input type="checkbox" id="a_levels" checked @change="setFilter">
+            <label for="a_levels">A-Levels</label>
+        </span> -->
     </base-card>
 </template>
 
@@ -41,7 +41,7 @@ export default {
                 adults: true,
                 dele: true,
                 children: true,
-                gcse: true,        
+                gcse: true,  
             }
         }
     },
