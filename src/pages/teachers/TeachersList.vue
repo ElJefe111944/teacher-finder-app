@@ -4,6 +4,8 @@
         Filter
     </section>
     <section>
+        <!-- Card -->
+        <base-card>
         <!-- refresh & Register btns -->
         <div class="controls">
             <button>Refresh</button>
@@ -21,16 +23,20 @@
         </ul>
         <!-- If no teachers are found -->
         <h3 v-else>No teachers found...</h3>
+        <!-- end of card -->
+    </base-card>
     </section>
 </template>
     
     <script>
+import BaseCard from '@/components/ui/BaseCard.vue';
      import TeacherItem from '../../components/teachers/TeacherItem.vue'
 
     export default {
           
         components: {
             TeacherItem,
+                BaseCard,
         },
         computed: {
             filteredTeachers(){
