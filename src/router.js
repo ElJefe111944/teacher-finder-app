@@ -17,7 +17,7 @@ const router = createRouter({
         // all teachers
         { path: '/teachers', component: TeachersList },
         // individual teacher details page
-        { path: '/teacher/:id', component: TeacherDetail, children: [
+        { path: '/teachers/:id', component: TeacherDetail, props: true, children: [
             // nested route to contact teacher
             { path: 'contact', component: ContactTeacher }, // /teachers/t1/contact
         ] },
