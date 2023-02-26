@@ -1,9 +1,14 @@
 <template>
-    <div>
-
-    </div>
-</template>
-
-<script>
-
-</script>
+    <section>
+        <!-- filter -->
+        Filter
+    </section>
+    <section>
+        <!-- list of teachers -->
+        List of teachers
+    </section>
+    </template>
+    
+    <script>
+    
+    </script>
