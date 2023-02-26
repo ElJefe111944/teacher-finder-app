@@ -5,9 +5,7 @@
         <h4>£{{ rate }}/hour</h4>
         <div>
             <!-- areas  -->
-            <span v-for="area in areas" :key="area">
-            {{ area }}
-            </span>
+            <base-badge v-for="area in areas" :key="area" :title="area" :type="area" >           </base-badge>
         </div>
         <div class="actions">
             <base-button mode="outline" link :to="teacherContactLink">Contact</base-button>
@@ -17,10 +15,11 @@
 </template>
 
 <script>
+import BaseBadge from '../ui/BaseBadge.vue';
 import BaseButton from '../ui/BaseButton.vue';
 
 export default {
-  components: { BaseButton },
+  components: { BaseButton, BaseBadge },
     props: ['id','firstName','lastName','rate','areas'],
     computed: {
         fullName(){
@@ -55,7 +54,7 @@ h4 {
 }
 
 div {
-  margin: 0.5rem 0;
+  margin: 1.25rem 0;
 }
 
 .actions {

@@ -11,7 +11,7 @@ export default {
                     id: 't1',
                     firstName: 'Pablo',
                     lastName: 'Gonzalez',
-                    arears: ['DELE preparation', 'Adults'],
+                    areas: ['DELE', 'Adults'],
                     description: 'Pablo has been a teacvher for over 15 years',
                     hourlyRate: 25,
                 },
@@ -19,7 +19,7 @@ export default {
                     id: 't2',
                     firstName: 'Clara',
                     lastName: 'Fernandez',
-                    arears: ['DELE preparation', 'Adults', 'children', 'GCSE & A-levels'],
+                    areas: ['DELE', 'Adults', 'children', 'GCSE & A-levels'],
                     description: 'Clara has been a teacvher for over 10 years',
                     hourlyRate: 30,
                 }
