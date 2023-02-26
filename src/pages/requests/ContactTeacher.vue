@@ -1,7 +1,5 @@
 <template>
-    <div>
-
-    </div>
+Contact Teacher
 </template>
 
 <script>

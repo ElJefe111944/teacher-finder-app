@@ -57,6 +57,10 @@ h1 a {
   color: #fff;
   margin: 0;
 }
+h1 a:hover {
+  color: #fff;
+  border: none;
+}
 
 h1 a:hover,
 h1 a:active,
