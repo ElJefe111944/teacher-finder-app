@@ -1,7 +1,7 @@
 <template>
     <section>
         <!-- filter -->
-        Filter
+        <TeacherFilter @change-filter="setFilters" />
     </section>
     <section>
         <!-- Card -->
@@ -29,16 +29,16 @@
 </template>
     
     <script>
-import BaseCard from '@/components/ui/BaseCard.vue';
-     import TeacherItem from '../../components/teachers/TeacherItem.vue'
-import BaseButton from '@/components/ui/BaseButton.vue';
+
+import TeacherItem from '../../components/teachers/TeacherItem.vue';
+import TeacherFilter from '@/components/teachers/TeacherFilter.vue';
 
     export default {
           
         components: {
             TeacherItem,
-                BaseCard,
-                BaseButton,
+            TeacherFilter,
+
         },
         computed: {
             filteredTeachers(){
