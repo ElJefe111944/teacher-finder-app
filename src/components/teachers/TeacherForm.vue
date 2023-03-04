@@ -44,6 +44,7 @@
 <script>
 
 export default {
+    emits: ['save-data'],
     data() {
         return {
             firstName: '',
@@ -63,6 +64,8 @@ export default {
                 areas: this.areas,
             };
             console.log(formData);
+            // data from form passed to parent component - Teacher Registration
+            this.$emit('save-data', formData);
         }
     }
 };

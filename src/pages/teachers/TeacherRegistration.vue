@@ -2,7 +2,7 @@
     <section>
         <base-card>
         <h2>Register as a teacher now!</h2>
-        <TeacherForm />
+        <TeacherForm @save-data="saveData"/>
         </base-card>
     </section>
 </template>
@@ -13,9 +13,12 @@ import TeacherForm from '@/components/teachers/TeacherForm.vue';
 export default {
     components: {
         TeacherForm,
-
+    },
+    methods: {
+        saveData(data){
+            console.log(`Teacher Reg - ${data}`)
+        }
     }
-
 }
 
 </script>
