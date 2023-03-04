@@ -14,7 +14,7 @@
         </div>
         <div class="form-control">
             <label for="rate">Hourly Rate</label>
-            <input type="number" id="rate" v-mode.number="rate">
+            <input type="number" name="rate" id="rate" v-model.number="rate">
         </div>
         <div class="form-control">
             <h3>Areas of Expertise</h3>
@@ -66,6 +66,8 @@ export default {
             console.log(formData);
             // data from form passed to parent component - Teacher Registration
             this.$emit('save-data', formData);
+            // redirect to homepage after submission
+            this.$router.replace('/teachers');
         }
     }
 };

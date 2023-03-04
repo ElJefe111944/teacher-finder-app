@@ -16,7 +16,7 @@ export default {
     },
     methods: {
         saveData(data){
-            console.log(`Teacher Reg - ${data}`)
+            this.$store.dispatch('teachers/registerTeacher', data);
         }
     }
 }
