@@ -17,7 +17,7 @@ export default {
     methods: {
         saveData(data){
             this.$store.dispatch('teachers/registerTeacher', data);
-        }
+        },
     }
 }
 
