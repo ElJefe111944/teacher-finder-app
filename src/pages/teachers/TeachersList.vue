@@ -9,10 +9,14 @@
             <!-- refresh & Register btns -->
             <div class="controls">
                 <base-button mode="outline" @click="loadTeachers">Refresh</base-button>
-                <base-button v-if="!isTeacher" link to="/register">Register as a Teacher</base-button>
+                <base-button v-if="!isTeacher && !isLoading" link to="/register">Register as a Teacher</base-button>
+            </div>
+            <!-- Loading spinner -->
+            <div v-if="isLoading">
+                <base-spinner></base-spinner>
             </div>
             <!-- list of teachers -->
-            <ul v-if="hasTeachers">
+            <ul v-else-if="hasTeachers">
                 <TeacherItem v-for="teacher in filteredTeachers" :key="teacher.id" :id="teacher.id"
                     :first-name="teacher.firstName" :last-name="teacher.lastName" :rate="teacher.hourlyRate"
                     :areas="teacher.areas" />
@@ -25,9 +29,9 @@
 </template>
     
 <script>
-
 import TeacherItem from '../../components/teachers/TeacherItem.vue';
 import TeacherFilter from '@/components/teachers/TeacherFilter.vue';
+
 
 export default {
 
@@ -38,6 +42,7 @@ export default {
     },
     data() {
         return {
+            isLoading: false,
             activeFilters: {
                 adults: true,
                 dele: true,
@@ -74,7 +79,7 @@ export default {
         },
         hasTeachers() {
             // check to see if teachers array is empty
-            return this.$store.getters['teachers/hasTeachers'];
+            return !this.isLoading && this.$store.getters['teachers/hasTeachers'];
         }
     },
     created(){
@@ -86,10 +91,12 @@ export default {
             // overwrite active filters with updated filters
             this.activeFilters = updatedFilters;
         },
-        loadTeachers(){
+        async loadTeachers(){
+            this.isLoading = true;
             // dispatch loadTeachers action from store
             // to be triggered when component is created 
-            this.$store.dispatch('teachers/loadTeachers');
+            await this.$store.dispatch('teachers/loadTeachers');
+            this.isLoading = false;
         }
     },
 }
