@@ -1,4 +1,7 @@
 <template>
+    <base-dialog @close="handleError" :show="!!error" title="An error occured!"><!-- !! - converts error to boolean -->
+        <p>{{ error }}</p>
+    </base-dialog>
     <section>
         <!-- filter -->
         <TeacherFilter @change-filter="setFilters" />
@@ -43,6 +46,7 @@ export default {
     data() {
         return {
             isLoading: false,
+            error: null,
             activeFilters: {
                 adults: true,
                 dele: true,
@@ -95,8 +99,17 @@ export default {
             this.isLoading = true;
             // dispatch loadTeachers action from store
             // to be triggered when component is created 
-            await this.$store.dispatch('teachers/loadTeachers');
+            try {
+                await this.$store.dispatch('teachers/loadTeachers');
+            } catch (error) {
+                this.error = error.message || 'Something went wrong';
+            }
+        
             this.isLoading = false;
+
+        },
+        handleError(){
+            this.error = null;
         }
     },
 }
