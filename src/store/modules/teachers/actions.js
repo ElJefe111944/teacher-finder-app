@@ -27,5 +27,29 @@ export default {
             ...teacherData,
             id: userId
         });
-    }
+    },
+    async loadTeachers(context){
+        const response = await fetch(`https://teacher-finder-app-5fba7-default-rtdb.europe-west1.firebasedatabase.app/teachers/.json`);
+        const responseData = await response.json();
+
+        if(!response.ok){
+            // error handling 
+
+        }
+        // reformat object from firebase
+        const teachers = [];
+        // key = teacher id
+        for(const key in responseData){
+            const teacherData = {
+                // match names registration form to state
+                firstName: responseData[key].firstName,
+                lastName: responseData[key].lastName,
+                description: responseData[key].description,
+                hourlyRate: responseData[key].hourlyRate,
+                areas: responseData[key].areas,
+            };
+            teachers.push(teacherData);
+        }
+        context.commit('setTeachers', teachers);
+    },
 };

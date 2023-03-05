@@ -8,7 +8,7 @@
         <base-card>
             <!-- refresh & Register btns -->
             <div class="controls">
-                <base-button mode="outline">Refresh</base-button>
+                <base-button mode="outline" @click="loadTeachers">Refresh</base-button>
                 <base-button v-if="!isTeacher" link to="/register">Register as a Teacher</base-button>
             </div>
             <!-- list of teachers -->
@@ -77,10 +77,19 @@ export default {
             return this.$store.getters['teachers/hasTeachers'];
         }
     },
+    created(){
+        // trigger loadTeachers method when component is created 
+        this.loadTeachers();
+    },
     methods: {
         setFilters(updatedFilters) {
             // overwrite active filters with updated filters
             this.activeFilters = updatedFilters;
+        },
+        loadTeachers(){
+            // dispatch loadTeachers action from store
+            // to be triggered when component is created 
+            this.$store.dispatch('teachers/loadTeachers');
         }
     },
 }

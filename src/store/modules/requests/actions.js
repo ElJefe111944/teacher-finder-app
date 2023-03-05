@@ -7,5 +7,5 @@ export default {
             message: payload.message,
         };
         context.commit('addRequest', newRequest); // (mutation, payload)
-    }
+    },
 };
