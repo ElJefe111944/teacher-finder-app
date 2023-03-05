@@ -36,8 +36,15 @@ export default {
                 this.formIsValid = false;
                 return;
             }
-
-            
+            // dispatch contactTeacher action from store
+             // (request = namespaced module/ contactTeacher = action name)            
+            this.$store.dispatch('requests/contactTeacher', {
+              email: this.email,
+              message :this.message,
+              teacherId: this.$route.params.id,
+            });
+            // navigate away from page after submission
+            this.$router.replace('/teachers'); // Use replace Not push so the user cannot go back after submission 
         }
     }
 }
