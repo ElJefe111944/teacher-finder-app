@@ -45,9 +45,9 @@ export default {
             });
             // navigate away from page after submission
             this.$router.replace('/teachers'); // Use replace Not push so the user cannot go back after submission 
-        }
-    }
-}
+        },
+    },
+};
 </script>
 
 <style scoped>
