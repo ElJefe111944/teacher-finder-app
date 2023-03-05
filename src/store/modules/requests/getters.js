@@ -1,10 +1,11 @@
 export default {
-    requests(state){
+    requests(state, _, _2, rootGetters){
+        const teacherId = rootGetters.userId;
         // return list of requests
-        return state.requests;
+        return state.requests.filter(req => req.teacherId === teacherId);
     },
-    hasRequests(state){
+    hasRequests(_, getters){
         // check to verify that requets array isnt empty
-        return state.requests && state.requests.length > 0;
+        return getters.requests && getters.requests.length > 0;
     },
 };
