@@ -28,7 +28,12 @@ export default {
             id: userId
         });
     },
-    async loadTeachers(context){
+    async loadTeachers(context, payload){
+        // verify if 1 minute has passed simce last update
+        if(!payload.forceRefresh && !context.getters.shouldUodate){
+            return; // stick to current data in store
+        }
+        // update current data by sending http request 
         const response = await fetch(`https://teacher-finder-app-5fba7-default-rtdb.europe-west1.firebasedatabase.app/teachers/.json`);
         const responseData = await response.json();
 
@@ -53,5 +58,6 @@ export default {
             teachers.push(teacherData);
         }
         context.commit('setTeachers', teachers);
+        context.commit('setFetchTimeStamp');
     },
 };

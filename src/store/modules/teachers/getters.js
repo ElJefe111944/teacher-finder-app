@@ -11,6 +11,13 @@ export default {
         const userId = rootGetters.userId;
         // check if id matches 
         return teachers.some(teacher => teacher.id === userId);
-
-    }    
+    },
+    shouldUpdate(state){
+        const lastFetch = state.lastFetch;
+        if(!lastFetch){
+            return true;
+        }
+        const currentTimeStamp = new Date().getTime();
+        return (currentTimeStamp - lastFetch) / 1000 > 60; // returns true if greater than 1 minute
+    }  
 };

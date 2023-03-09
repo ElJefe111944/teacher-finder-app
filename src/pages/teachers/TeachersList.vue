@@ -11,7 +11,7 @@
         <base-card>
             <!-- refresh & Register btns -->
             <div class="controls">
-                <base-button mode="outline" @click="loadTeachers">Refresh</base-button>
+                <base-button mode="outline" @click="loadTeachers(true)">Refresh</base-button>
                 <base-button v-if="!isTeacher && !isLoading" link to="/register">Register as a Teacher</base-button>
             </div>
             <!-- Loading spinner -->
@@ -95,12 +95,12 @@ export default {
             // overwrite active filters with updated filters
             this.activeFilters = updatedFilters;
         },
-        async loadTeachers(){
+        async loadTeachers(refresh = false){
             this.isLoading = true;
             // dispatch loadTeachers action from store
             // to be triggered when component is created 
             try {
-                await this.$store.dispatch('teachers/loadTeachers');
+                await this.$store.dispatch('teachers/loadTeachers', {forceRefresh: refresh});
             } catch (error) {
                 this.error = error.message || 'Something went wrong';
             }
