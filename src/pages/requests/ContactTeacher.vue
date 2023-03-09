@@ -40,7 +40,7 @@ export default {
              // (request = namespaced module/ contactTeacher = action name)            
             this.$store.dispatch('requests/contactTeacher', {
               email: this.email,
-              message :this.message,
+              message: this.message,
               teacherId: this.$route.params.id,
             });
             // navigate away from page after submission

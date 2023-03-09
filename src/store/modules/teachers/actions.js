@@ -43,6 +43,7 @@ export default {
         for(const key in responseData){
             const teacherData = {
                 // match names registration form to state
+                id: key,
                 firstName: responseData[key].firstName,
                 lastName: responseData[key].lastName,
                 description: responseData[key].description,

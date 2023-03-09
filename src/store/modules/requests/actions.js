@@ -1,8 +1,6 @@
 export default {
     async contactTeacher(context, payload){
         const newRequest = {
-            // id: new Date().toISOString,
-            // teacherId: payload.teacherId,
             userEmail: payload.email,
             message: payload.message,
         };
@@ -19,8 +17,8 @@ export default {
             throw error;
         }
 
-        newRequest.id = responseData.name;
-        newRequest.teacherId = payload.teacherId
+        newRequest.id = responseData.name; // name field hold automatically generated id
+        newRequest.teacherId = payload.teacherId;
 
         context.commit('addRequest', newRequest); // (mutation, payload)
     },
@@ -34,5 +32,18 @@ export default {
             const error = new Error(responseData.message || 'Failed to fetch request');
             throw error;
         }
+
+        const requests = []
+
+        for (const key in responseData){
+            const request = {
+                id: key,
+                teacherId: teacherId,
+                userEmail: responseData[key].userEmail,
+                message: responseData[key].message,
+            };
+            requests.push(request);
+        }
+        context.commit('setRequests', requests);
     }    
 };
