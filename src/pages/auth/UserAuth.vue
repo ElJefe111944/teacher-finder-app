@@ -1,76 +1,98 @@
 <template>
-    <base-card>
-        <form @submit.prevent="submitForm"> 
-            <div class="form-control">
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" v-model.trim="email">
-            </div>
-            <div class="form-control">
-                <label for="password">Password:</label>
-                <input type="password" id="password" v-model.trim="password">
-            </div>
-            <p v-if="!formIsValid">Please enter a valid email and password (must be atleast 6 characters long).</p>
-            <base-button>{{ submitButtonCaption }}</base-button>
-            <base-button type="button" mode="flat" @click="switchAuthMode">{{ switchModeCaption }}</base-button>
-        </form>
-    </base-card>
+    <div>
+        <!-- error dialog -->
+        <base-dialog :show="!!error" title="An error occured" @close="handleError">
+            <p>{{ error }}</p>
+        </base-dialog>
+        <!-- loading dialog -->
+        <base-dialog :show="isLoading" title="Authenticating" fixed>
+            <base-spinner></base-spinner>
+        </base-dialog>
+        <base-card>
+            <form @submit.prevent="submitForm">
+                <div class="form-control">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" v-model.trim="email">
+                </div>
+                <div class="form-control">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" v-model.trim="password">
+                </div>
+                <p v-if="!formIsValid">Please enter a valid email and password (must be atleast 6 characters long).</p>
+                <base-button>{{ submitButtonCaption }}</base-button>
+                <base-button type="button" mode="flat" @click="switchAuthMode">{{ switchModeCaption }}</base-button>
+            </form>
+        </base-card>
+    </div>
 </template>
 
 <script>
 
-
 export default {
-    data(){
+    data() {
         return {
             email: '',
             password: '',
             formIsValid: true,
             mode: 'login',
+            isLoading: false,
+            error: null,
         }
     },
     computed: {
-        submitButtonCaption(){
-            if(this.mode === 'login'){
+        submitButtonCaption() {
+            if (this.mode === 'login') {
                 return 'Login';
             } else {
                 return 'Sign Up';
             }
         },
-        switchModeCaption(){
-            if(this.mode === 'login'){
+        switchModeCaption() {
+            if (this.mode === 'login') {
                 return 'Sign Up instead';
             } else {
                 return 'Login instead';
-            } 
+            }
         }
     },
     methods: {
-        submitForm(){
+        async submitForm() {
             this.formIsValid = true;
             // email & password verification
-            if(this.email === '' || !this.email.includes('@') || this.password.length < 6){
+            if (this.email === '' || !this.email.includes('@') || this.password.length < 6) {
                 this.formIsValid = false;
                 return;
             }
+            this.isLoading = true;
             // send hhtp request  
-            if(this.mode === 'login'){
-                // dispatch login action..  
-            
-            } else {
-                // dispatch sign up action...
-                this.$store.dispatch('signup', {
-                    email: this.email,
-                    password: this.password,
-                });
+            try {
+                if (this.mode === 'login') {
+                    // dispatch login action..  
+
+                } else {
+                    // dispatch sign up action...
+                    await this.$store.dispatch('signup', {
+                        email: this.email,
+                        password: this.password,
+                    });
+                }
+            } catch (err) {
+                this.error = err.message || 'Failed to authenticate, try later';
             }
+
+
+            this.isLoading = false;
         },
-        switchAuthMode(){
-            if(this.mode === 'login'){
+        switchAuthMode() {
+            if (this.mode === 'login') {
                 this.mode = 'signup';
             } else {
                 this.mode = 'login';
             }
-        }
+        },
+        handleError(){
+        this.error = null;
+    }
     },
 }
 </script>
