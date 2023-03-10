@@ -1,34 +1,36 @@
 <template>
-    <base-dialog @close="handleError" :show="!!error" title="An error occured!"><!-- !! - converts error to boolean -->
-        <p>{{ error }}</p>
-    </base-dialog>
-    <section>
-        <!-- filter -->
-        <TeacherFilter @change-filter="setFilters" />
-    </section>
-    <section>
-        <!-- Card -->
-        <base-card>
-            <!-- refresh & Register btns -->
-            <div class="controls">
-                <base-button mode="outline" @click="loadTeachers(true)">Refresh</base-button>
-                <base-button v-if="!isTeacher && !isLoading" link to="/register">Register as a Teacher</base-button>
-            </div>
-            <!-- Loading spinner -->
-            <div v-if="isLoading">
-                <base-spinner></base-spinner>
-            </div>
-            <!-- list of teachers -->
-            <ul v-else-if="hasTeachers">
-                <TeacherItem v-for="teacher in filteredTeachers" :key="teacher.id" :id="teacher.id"
-                    :first-name="teacher.firstName" :last-name="teacher.lastName" :rate="teacher.hourlyRate"
-                    :areas="teacher.areas" />
-            </ul>
-            <!-- If no teachers are found -->
-            <h3 v-else>No teachers found...</h3>
-            <!-- end of card -->
-        </base-card>
-    </section>
+    <div>
+        <base-dialog @close="handleError" :show="!!error" title="An error occured!"><!-- !! - converts error to boolean -->
+            <p>{{ error }}</p>
+        </base-dialog>
+        <section>
+            <!-- filter -->
+            <TeacherFilter @change-filter="setFilters" />
+        </section>
+        <section>
+            <!-- Card -->
+            <base-card>
+                <!-- refresh & Register btns -->
+                <div class="controls">
+                    <base-button mode="outline" @click="loadTeachers(true)">Refresh</base-button>
+                    <base-button v-if="!isTeacher && !isLoading" link to="/register">Register as a Teacher</base-button>
+                </div>
+                <!-- Loading spinner -->
+                <div v-if="isLoading">
+                    <base-spinner></base-spinner>
+                </div>
+                <!-- list of teachers -->
+                <ul v-else-if="hasTeachers">
+                    <TeacherItem v-for="teacher in filteredTeachers" :key="teacher.id" :id="teacher.id"
+                        :first-name="teacher.firstName" :last-name="teacher.lastName" :rate="teacher.hourlyRate"
+                        :areas="teacher.areas" />
+                </ul>
+                <!-- If no teachers are found -->
+                <h3 v-else>No teachers found...</h3>
+                <!-- end of card -->
+            </base-card>
+        </section>
+    </div>
 </template>
     
 <script>

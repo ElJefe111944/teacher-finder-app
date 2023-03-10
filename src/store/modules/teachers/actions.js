@@ -34,7 +34,7 @@ export default {
             return; // stick to current data in store
         }
         // update current data by sending http request 
-        const response = await fetch(`https://teacher-finder-app-5fba7-default-rtdb.europe-west1.firebasedatabase.app/teachers/.jso`);
+        const response = await fetch(`https://teacher-finder-app-5fba7-default-rtdb.europe-west1.firebasedatabase.app/teachers/.json`);
         const responseData = await response.json();
 
         if(!response.ok){
