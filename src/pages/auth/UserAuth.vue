@@ -15,6 +15,7 @@
         </form>
     </base-card>
 </template>
+
 <script>
 
 
@@ -51,7 +52,17 @@ export default {
                 this.formIsValid = false;
                 return;
             }
-            // send hhtp request            
+            // send hhtp request  
+            if(this.mode === 'login'){
+                // dispatch login action..  
+            
+            } else {
+                // dispatch sign up action...
+                this.$store.dispatch('signup', {
+                    email: this.email,
+                    password: this.password,
+                });
+            }
         },
         switchAuthMode(){
             if(this.mode === 'login'){
