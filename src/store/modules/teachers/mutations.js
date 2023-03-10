@@ -6,5 +6,8 @@ export default {
     setTeachers(state, payload){
         // set teacher in state to database in firebase
         state.teachers = payload;
+    },
+    setFetchTimeStamp(state){
+        state.lastFetch = new Date().getTime();
     }
 };
