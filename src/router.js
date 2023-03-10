@@ -6,6 +6,7 @@ import TeacherRegistration from './pages/teachers/TeacherRegistration.vue';
 import ContactTeacher from './pages/requests/ContactTeacher.vue';
 import RequestsRecieved from './pages/requests/RequestsRecieved.vue';
 import NotFound from './pages/NotFound.vue'
+import UserAuth from './pages/auth/UserAuth.vue';
 
 // router configure
 const router = createRouter({
@@ -27,6 +28,8 @@ const router = createRouter({
         { path: '/requests', component: RequestsRecieved },
         // 404 / page not found
         { path: '/:notFound(.*)', component: NotFound },
+        // user authentication page
+        { path: '/auth', component: UserAuth},
     ]
 });
 
