@@ -64,17 +64,20 @@ export default {
                 return;
             }
             this.isLoading = true;
-            // send hhtp request  
+
+            const actionPayload = {
+                email: this.email,
+                password: this.password,
+            }
+            // send http request  
             try {
                 if (this.mode === 'login') {
                     // dispatch login action..  
+                    await this.$store.dispatch('login', actionPayload);
 
                 } else {
                     // dispatch sign up action...
-                    await this.$store.dispatch('signup', {
-                        email: this.email,
-                        password: this.password,
-                    });
+                    await this.$store.dispatch('signup', actionPayload);
                 }
             } catch (err) {
                 this.error = err.message || 'Failed to authenticate, try later';
@@ -90,9 +93,9 @@ export default {
                 this.mode = 'login';
             }
         },
-        handleError(){
-        this.error = null;
-    }
+        handleError() {
+            this.error = null;
+        }
     },
 }
 </script>
