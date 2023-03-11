@@ -13,7 +13,7 @@
                 <!-- refresh & Register btns -->
                 <div class="controls">
                     <base-button mode="outline" @click="loadTeachers(true)">Refresh</base-button>
-                    <base-button link to="/auth" v-if="!isLoggedIn">Login</base-button>
+                    <base-button link to="/auth?redirect=register" v-if="!isLoggedIn">Login to Register as a Teacher</base-button>
                     <base-button v-if="isLoggedIn && !isTeacher && !isLoading" link to="/register">Register as a Teacher</base-button>
                 </div>
                 <!-- Loading spinner -->

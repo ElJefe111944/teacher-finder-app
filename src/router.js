@@ -7,6 +7,7 @@ import ContactTeacher from './pages/requests/ContactTeacher.vue';
 import RequestsRecieved from './pages/requests/RequestsRecieved.vue';
 import NotFound from './pages/NotFound.vue'
 import UserAuth from './pages/auth/UserAuth.vue';
+import store from "./store";
 
 // router configure
 const router = createRouter({
@@ -23,14 +24,25 @@ const router = createRouter({
             { path: 'contact', component: ContactTeacher }, // /teachers/t1/contact
         ] },
         // register as teacher
-        { path: '/register', component: TeacherRegistration },
+        { path: '/register', component: TeacherRegistration, meta: { requiresAuth: true } },
         // view all requests
-        { path: '/requests', component: RequestsRecieved },
+        { path: '/requests', component: RequestsRecieved, meta: { requiresAuth: true } },
         // 404 / page not found
         { path: '/:notFound(.*)', component: NotFound },
         // user authentication page
-        { path: '/auth', component: UserAuth},
+        { path: '/auth', component: UserAuth, meta: { requiresUnauth: true } },
     ]
+});
+
+// global navigation guard
+router.beforeEach(function(to, _, next){
+    if(to.meta.requiresAuth && !store.getters.isAuthenticated){
+        next('/auth');
+    } else if (to.meta.requiresUnauth && store.getters.isAuthenticated){
+        next('/teachers');
+    } else {
+        next();
+    }
 });
 
 export default router;
