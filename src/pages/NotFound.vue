@@ -6,7 +6,3 @@
         </base-card>
     </section>
 </template>
-
-<script>
-
-</script>

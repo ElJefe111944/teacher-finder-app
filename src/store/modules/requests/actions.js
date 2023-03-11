@@ -24,7 +24,8 @@ export default {
     },
     async fetchRequests(context){
         const teacherId = context.rootGetters.userId;
-        const response = await fetch(`https://teacher-finder-app-5fba7-default-rtdb.europe-west1.firebasedatabase.app/requests/${teacherId}.json`);
+        const token = context.rootGetters.token;
+        const response = await fetch(`https://teacher-finder-app-5fba7-default-rtdb.europe-west1.firebasedatabase.app/requests/${teacherId}.json?auth=${token}`);
         const responseData = await response.json();
 
         if(!response.ok){

@@ -10,8 +10,10 @@ export default {
             areas: payload.areas,
         };
 
+        const token = context.rootGetters.token;
+
         // send request to firebase 
-        const response = await fetch(`https://teacher-finder-app-5fba7-default-rtdb.europe-west1.firebasedatabase.app/teachers/${userId}.json`, {
+        const response = await fetch(`https://teacher-finder-app-5fba7-default-rtdb.europe-west1.firebasedatabase.app/teachers/${userId}.json?auth=${token}`, {
             method: 'PUT', // PUT - Overwritten if exited NOT POST
             body: JSON.stringify(teacherData), 
         });

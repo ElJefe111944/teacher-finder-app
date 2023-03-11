@@ -69,7 +69,7 @@ export default {
                 email: this.email,
                 password: this.password,
             }
-            // send http request  
+            // send http request   
             try {
                 if (this.mode === 'login') {
                     // dispatch login action..  
