@@ -13,7 +13,8 @@
                 <!-- refresh & Register btns -->
                 <div class="controls">
                     <base-button mode="outline" @click="loadTeachers(true)">Refresh</base-button>
-                    <base-button v-if="!isTeacher && !isLoading" link to="/register">Register as a Teacher</base-button>
+                    <base-button link to="/auth" v-if="!isLoggedIn">Login</base-button>
+                    <base-button v-if="isLoggedIn && !isTeacher && !isLoading" link to="/register">Register as a Teacher</base-button>
                 </div>
                 <!-- Loading spinner -->
                 <div v-if="isLoading">
@@ -43,7 +44,6 @@ export default {
     components: {
         TeacherItem,
         TeacherFilter,
-
     },
     data() {
         return {
@@ -58,6 +58,9 @@ export default {
         };
     },
     computed: {
+        isLoggedIn(){
+            return this.$store.getters.isAuthenticated;
+        },
         isTeacher() {
             // verify if user is already registered as a coach
             return this.$store.getters['teachers/isTeacher'];
