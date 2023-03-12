@@ -61,4 +61,20 @@ div {
   display: flex;
   justify-content: flex-end;
 }
+@media(max-width: 768px){
+  div[data-v-216da247] {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+h2 {
+    font-size: 18px;
+}
+h3 {
+    font-size: 16px;
+}
+.actions[data-v-216da247] {
+    display: flex;
+    justify-content: center;
+}
+}
 </style>

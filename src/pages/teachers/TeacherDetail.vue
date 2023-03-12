@@ -61,3 +61,27 @@ export default {
     },
 }
 </script>
+<style scoped>
+
+@media(max-width: 768px){
+    .card[data-v-52c8cadc] {
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    padding: 1rem;
+    margin: 2rem .75rem;
+    max-width: 40rem;
+}
+h2 {
+    font-size: 18px;
+}
+h3 {
+    font-size: 16px;
+}
+a {
+    justify-content: center;
+}
+p {
+    font-size: 15px;
+}
+}
+</style>

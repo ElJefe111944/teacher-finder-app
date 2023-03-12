@@ -75,4 +75,14 @@ button:active {
 .outline:active {
   background-color: #f1a605;
 }
+@media(max-width: 768px){
+button[data-v-1d5dce04][data-v-1d5dce04], a[data-v-1d5dce04][data-v-1d5dce04] {
+    padding: 0.25rem 1.5rem;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px;
+}
+}
+
 </style>

@@ -24,5 +24,11 @@ export default {
   display: inline-block;
   margin-right: 0.5rem;
 }
-
+@media(max-width: 768px){
+    .badge  {
+    padding: 0.5rem 1.5rem;
+    font-size: 12px;
+    margin: 5px;
+}
+}
 </style>

@@ -86,4 +86,12 @@ h2 {
 .filter-option.active label {
   font-weight: bold;
 }
+@media(max-width: 768px){
+    span.filter-option {
+    white-space: nowrap;
+}
+label {
+    font-size: 13px;
+}
+}
 </style>

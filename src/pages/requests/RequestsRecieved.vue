@@ -76,4 +76,9 @@ ul {
 h3 {
   text-align: center;
 }
+@media(max-width: 768px){
+    h3 {
+    font-size: 16px;
+}
+}
 </style>
