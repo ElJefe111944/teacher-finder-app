@@ -49,7 +49,7 @@ export default {
             return `${this.selectedTeacher.firstName} ${this.selectedTeacher.lastName}`
         },
         contactLink(){
-            return `${this.$route.path}/${this.id}/contact`;
+            return `${this.$route.path}/contact`;
         },
         description(){
             return this.selectedTeacher.description;

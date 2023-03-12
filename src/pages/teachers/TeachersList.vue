@@ -100,7 +100,7 @@ export default {
             // overwrite active filters with updated filters
             this.activeFilters = updatedFilters;
         },
-        async loadTeachers(refresh = false){
+        async loadTeachers(refresh = true){
             this.isLoading = true;
             // dispatch loadTeachers action from store
             // to be triggered when component is created 
