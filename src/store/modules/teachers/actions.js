@@ -47,7 +47,7 @@ export default {
         }
         // reformat object from firebase
         const teachers = [];
-        // key = teacher id
+        // key = teacher id 
         for(const key in responseData){
             const teacherData = {
                 // match names registration form to state
