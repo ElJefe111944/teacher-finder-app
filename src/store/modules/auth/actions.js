@@ -1,3 +1,5 @@
+let timer;
+
 export default {
     async login(context, payload) {
         return context.dispatch('auth', {
@@ -34,35 +36,66 @@ export default {
             const error = new Error(responseData.message || 'Failed to authenticate. Check your login details');
             throw error;
         }
+
+        const expiresIn = Number(responseData.expiresIn * 1000);
+        // const expiresIn = 5000;
+        const expirationDate = new Date().getTime() + expiresIn;
+
         // store user token on page reloads
         localStorage.setItem('token', responseData.idToken);
         localStorage.setItem('userId', responseData.localId);
+        localStorage.setItem('tokenExpiration', expirationDate);
+
+        // log user out when token expires
+        timer = setTimeout(function(){
+            context.dispatch('autoLogout');
+        }, expiresIn);
 
         context.commit('setUser', {
             token: responseData.idToken,
             userId: responseData.localId,
-            tokenExpiration: responseData.expiresIn,
         });
     },
     autoLogin(context){
         // check local storage
         const token = localStorage.getItem('token');
         const userId = localStorage.getItem('userId');
+        const tokenExpiration = localStorage.getItem('tokenExpiration');
+
+        // difference between tokenExpiration & current time stamp
+        const expiresIn = Number(tokenExpiration) - new Date().getTime();
+
+        if(expiresIn < 0){
+            return; // token invalid
+        }
+
+        timer = setTimeout(function(){
+            context.dispatch('autoLogout');
+        }, expiresIn);
 
         if(token && userId){
             context.commit('setUser', {
                 token: token,
                 userId: userId,
-                tokenExpiration: null,
             });
         }
     },
     logout(context){
+        // clear local storage
+        localStorage.removeItem('token');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('tokenExpiration');
+
+        // clear timer when logged out
+        clearTimeout(timer);
+
         context.commit('setUser', {
             token: null,
             userId: null,
-            tokenExpiration: null,
-        })
-
+        });
     },
+    autoLogout(context){
+        context.dispatch('logout');
+        context.commit('setAutoLogout');
+    }
 };

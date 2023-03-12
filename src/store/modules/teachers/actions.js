@@ -22,6 +22,7 @@ export default {
 
         if (!response.ok){
             // error handling
+            
 
         }
 
