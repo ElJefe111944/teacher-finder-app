@@ -77,7 +77,7 @@ button:active {
 }
 @media(max-width: 768px){
 button[data-v-1d5dce04][data-v-1d5dce04], a[data-v-1d5dce04][data-v-1d5dce04] {
-    padding: 0.25rem 1.5rem;
+    padding: 0.55rem 1.5rem;
     font-size: 12px;
     display: flex;
     align-items: center;
