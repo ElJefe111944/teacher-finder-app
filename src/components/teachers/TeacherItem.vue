@@ -3,7 +3,7 @@
         <!-- teacher details -->
         <h3>{{ fullName }}</h3>
         <h4>£{{ rate }}/hour</h4>
-        <div>
+        <div class="badge-container">
             <!-- areas  -->
             <base-badge v-for="area in areas" :key="area" :title="area" :type="area" >           </base-badge>
         </div>
@@ -62,7 +62,7 @@ div {
   justify-content: flex-end;
 }
 @media(max-width: 768px){
-  div[data-v-216da247] {
+  .badge-container {
     margin: 1.25rem 0;
     text-align: center;
 }
