@@ -72,10 +72,10 @@ body {
 /*-- Mobile styling --*/
 @media(max-width: 768px){
     /*-- Header --*/
-  header[data-v-9778edae] {
-    height: auto;
+header {
+    height: auto!important;
 }
-header nav[data-v-9778edae] {
+header nav {
     width: 100%;
     margin: auto;
     display: flex;
@@ -83,7 +83,7 @@ header nav[data-v-9778edae] {
     align-items: center;
     flex-direction: column;
 }
-h1 a[data-v-9778edae] {
+h1 a {
   font-size: 22px;
 }
     /*-- Links --*/
@@ -97,15 +97,11 @@ h1 a[data-v-9778edae] {
         margin-bottom: 5px;
         border: none;
     }
-    a[data-v-9778edae]:active, a[data-v-9778edae]:hover, a.router-link-active[data-v-9778edae] {
+    a:active, a:hover, a.router-link-active {
     border: none;
 }
-li[data-v-9778edae] {
+li {
     margin: 0;
-}
-div[data-v-216da247] {
-    margin: 1.25rem 0;
-    text-align: center;
 }
 h2 {
     font-size: 18px;
@@ -113,7 +109,7 @@ h2 {
 h3 {
     font-size: 16px;
 }
-.actions[data-v-216da247] {
+.actions {
     display: flex;
     justify-content: center;
 }
@@ -123,7 +119,7 @@ span.filter-option {
 label {
     font-size: 13px;
 }
-.actions[data-v-216da247] {
+.actions {
     display: flex;
     justify-content: flex-start;
 }
@@ -135,12 +131,13 @@ h3 {
     font-size: 12px;
     margin: 5px;
 }
-button[data-v-1d5dce04][data-v-1d5dce04], a[data-v-1d5dce04][data-v-1d5dce04] {
+button, a {
     padding: 0.55rem 1.5rem;
     font-size: 12px;
     display: flex;
     align-items: center;
     margin-bottom: 2px;
+    text-align: center;
 }
 }
 </style>
