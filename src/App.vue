@@ -68,4 +68,79 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+/*-- Mobile styling --*/
+@media(max-width: 768px){
+    /*-- Header --*/
+  header[data-v-9778edae] {
+    height: auto;
+}
+header nav[data-v-9778edae] {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+h1 a[data-v-9778edae] {
+  font-size: 22px;
+}
+    /*-- Links --*/
+    ul li a {
+        padding: 0px;
+        width: 120px;
+        padding: 6px 10px;
+        white-space: nowrap;
+        font-size: 12px;
+        text-align: center;
+        margin-bottom: 5px;
+        border: none;
+    }
+    a[data-v-9778edae]:active, a[data-v-9778edae]:hover, a.router-link-active[data-v-9778edae] {
+    border: none;
+}
+li[data-v-9778edae] {
+    margin: 0;
+}
+div[data-v-216da247] {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+h2 {
+    font-size: 18px;
+}
+h3 {
+    font-size: 16px;
+}
+.actions[data-v-216da247] {
+    display: flex;
+    justify-content: center;
+}
+span.filter-option {
+    white-space: nowrap;
+}
+label {
+    font-size: 13px;
+}
+.actions[data-v-216da247] {
+    display: flex;
+    justify-content: flex-start;
+}
+h3 {
+    font-size: 16px;
+}
+.badge  {
+    padding: 0.5rem 1.5rem;
+    font-size: 12px;
+    margin: 5px;
+}
+button[data-v-1d5dce04][data-v-1d5dce04], a[data-v-1d5dce04][data-v-1d5dce04] {
+    padding: 0.55rem 1.5rem;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px;
+}
+}
 </style>

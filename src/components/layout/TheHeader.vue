@@ -104,38 +104,5 @@ header ul {
 li {
   margin: 0 0.5rem;
 }
-@media(max-width: 768px){
-    /*-- Header --*/
-  header[data-v-9778edae] {
-    height: auto;
-}
-header nav[data-v-9778edae] {
-    width: 100%;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-}
-h1 a[data-v-9778edae] {
-  font-size: 22px;
-}
-    /*-- Links --*/
-    ul li a {
-        padding: 0px;
-        width: 120px;
-        padding: 6px 10px;
-        white-space: nowrap;
-        font-size: 12px;
-        text-align: center;
-        margin-bottom: 5px;
-        border: none;
-    }
-    a[data-v-9778edae]:active, a[data-v-9778edae]:hover, a.router-link-active[data-v-9778edae] {
-    border: none;
-}
-li[data-v-9778edae] {
-    margin: 0;
-}
-}
+
 </style>
